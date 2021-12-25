@@ -1,18 +1,42 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+<transition name="slide">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+       <RunnersInfo 
+          :participantInfo="participantInfo" 
+        />
+      </div>
+    </div>
   </div>
+  </transition>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import RunnersInfo from '@/components/RunnersInfo.vue'
+import axios from 'axios'
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    RunnersInfo,
+  },
+  data() {
+    return {
+      fields: ['name', 'gender', 'city', 'runner_status'],
+      participantInfo:[],
+      baseUrl: process.env.VUE_APP_BASE_URL,
+    }
+  }, 
+  methods:{
+    async getRunnersInfo(){
+      await axios.get(this.baseUrl + 'runs.json').then(response => {
+         this.participantInfo = response.data
+      })
+    }
+  },
+  mounted(){
+    this.getRunnersInfo()
   }
 }
 </script>
