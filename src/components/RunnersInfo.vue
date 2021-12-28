@@ -15,7 +15,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(item, index) in visibleTodos" :key="index">
+          <tr v-for="(item, index) in visibleParticipantInfo" :key="index">
             <td class="align-middle">{{item.name}}</td>
             <td class="align-middle">{{item.gender === 'm' ? 'Male' : 'Female'}}</td>
             <td class="align-middle">{{item.country_iso2}}</td>
@@ -49,7 +49,7 @@ export default {
        nextId: 13,
         currentPage:0,
         pageSize:8,
-        visibleTodos:[],
+        visibleParticipantInfo:[],
         totalPages:0
     }
   },
@@ -62,7 +62,7 @@ export default {
   watch:{
     participantInfo: function(newValue){
       if(newValue){
-        this.updateVisibleToods()
+        this.updateParticipantInfo()
       }
     }
   },
@@ -72,11 +72,11 @@ export default {
     },
     updatePage(pageNumber){
       this.currentPage = pageNumber
-      this.updateVisibleToods()
+      this.updateParticipantInfo()
     },
-    updateVisibleToods(){
-      this.visibleTodos= this.participantInfo.slice(this.currentPage*this.pageSize, (this.currentPage * this.pageSize) + this.pageSize)
-      if(this.visibleTodos === 0 && this.currentPage>0){
+    updateParticipantInfo(){
+      this.visibleParticipantInfo= this.participantInfo.slice(this.currentPage*this.pageSize, (this.currentPage * this.pageSize) + this.pageSize)
+      if(this.visibleParticipantInfo === 0 && this.currentPage>0){
         this.updatePage(this.currentPage-1)
       }
       this.totalPages = Math.ceil(this.participantInfo && this.participantInfo.length / this.pageSize);

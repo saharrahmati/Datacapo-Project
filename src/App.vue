@@ -2,7 +2,7 @@
   <div id="app">
     <div id="nav">
       <router-link to="/" class="navLink">Runners Information</router-link>
-      <router-link to="/AllTrack" class="navLink">All Traks of Ranners</router-link>
+      <router-link to="/AllTrack" class="navLink">All Traks of Runners</router-link>
     </div>
     <transition :name="transitionName">
       <router-view/>
