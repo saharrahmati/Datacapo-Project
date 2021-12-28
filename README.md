@@ -1,24 +1,7 @@
-# race
+Frontend Project with VueJS.
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+1. git clone https://github.com/saharrahmati/Datacapo-Project
+2. cd race
+3. set your host address in .env => VUE_APP_BASE_URL= "{YOUR_HOST}"
+4. npm install
+4. npm run server
